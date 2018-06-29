@@ -16,5 +16,3 @@ I.e., a piece of software that lets you:
 - Typing auto-completion
 - Glossaries
 - TM
-
-The primary aim of this project is as simply a portfolio item.
