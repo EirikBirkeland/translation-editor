@@ -5,12 +5,14 @@ I.e., a piece of software that lets you:
 - translate those documents, with advanced CAT (Computer-Assisted Translation) functionality
 - export the completed documents as files
 
-Planned features include:
+------------------------
+
+### Planned features include:
 - Segment filtering options, including full text search (TBA)
 - Search & replace (done)
 - Language checks
 
-Additional features may include:
+### Additional features may include:
 - Typing auto-completion
 - Glossaries
 - TM
