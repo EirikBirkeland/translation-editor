@@ -25,10 +25,6 @@ const styles = theme => ({
 
 class MyAppBar extends React.Component {
 
-    constructor() {
-        super()
-    }
-
     state = {
         tab: 0,
     }
@@ -52,6 +48,7 @@ class MyAppBar extends React.Component {
                     if(i === this.state.tab) {
                         return TabContainer(child);
                     }
+                    return null;
                 })}
             </div>
         )
