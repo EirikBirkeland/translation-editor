@@ -5,11 +5,8 @@ import Button from '@material-ui/core/Button';
 import loremIpsum from './loremipsum'
 import FileUploadIcon from '@material-ui/icons/FileUpload';
 
-
 import MyAppBar from './components/MyAppBar';
-import Document from './components/Document';
-
-import segmentsCollection from './data/hagakure';
+import Document from './containers/Document';
 
 const styles = theme => ({
   appBar: {
@@ -44,7 +41,7 @@ class App extends React.Component {
 
         <MyAppBar>
           <div>
-            <Document segmentsCollection={segmentsCollection} />
+            <Document />
           </div>
           <span>{loremIpsum()}</span>
           <span>{loremIpsum()}</span>

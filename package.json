@@ -18,6 +18,8 @@
   "devDependencies": {
     "@cypress/webpack-preprocessor": "^2.0.1",
     "babel-preset-env": "^1.7.0",
-    "cypress": "^3.0.1"
+    "cypress": "^3.0.1",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   }
 }
