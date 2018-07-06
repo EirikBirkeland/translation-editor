@@ -15,10 +15,10 @@ const styles = theme => ({
     },
 });
 
-const Document = ({ classes, segmentsCollection, registerSegmentChanges }) => {
+const Document = ({ classes, segmentsCollection, registerSegmentChanges, searchReplace }) => {
     return (
         <div style={{ maxWidth: "70%" }}>
-            <div style={{ border: "1px solid", padding: "5px" }}><SearchAndReplace onSubmitForm={this.onSubmitForm} /></div>
+            <div style={{ border: "1px solid", padding: "5px" }}><SearchAndReplace searchReplace={searchReplace} /></div>
 
             <Table className={classes.table}>
                 <TableHead>
@@ -56,29 +56,7 @@ handleInputChange = (event, i) => {
     this.props.dispatch(registerSegmentChanges(event.target.value, i));
 };
 
-onSubmitForm = (findValue, replaceValue, { caseInsensitive, regex, replaceAll }) => {
-    const newCollection = this.state.segmentsCollection.map(seg => {
-        const adjustedFindValue = (() => {
-            if (regex) {
-                let flags = '';
-                if (caseInsensitive) {
-                    flags += "i";
-                }
-                if (replaceAll) {
-                    flags += "g";
-                }
-                return new RegExp(findValue, flags);
-            } else {
-                return findValue;
-            }
-        })();
-
-        seg.target = seg.target.replace(adjustedFindValue, replaceValue);
-        return seg;
-    });
-
-    this.setState({ segmentsCollection: newCollection });
-};
+onSubmitForm = 
 */
 
 const mapStateToProps = state => ({
@@ -91,6 +69,14 @@ const mapDispatchToProps = dispatch => ({
             type: 'CHANGE_SEGMENT_CONTENT',
             value: event.target.value,
             index: index
+        }
+    ),
+    searchReplace: (findValue, replaceValue, options) => dispatch(
+        {
+            type: 'SEARCH_REPLACE',
+            findValue,
+            replaceValue,
+            options
         }
     )
 });
