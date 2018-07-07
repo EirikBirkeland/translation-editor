@@ -2,6 +2,14 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Checkbox from '@material-ui/core/Checkbox';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+    searchAndReplace: {
+        padding: '5px',
+    },
+
+});
 
 class SearchAndReplace extends React.Component {
 
@@ -14,12 +22,12 @@ class SearchAndReplace extends React.Component {
     }
     
     render() {
-        const { searchReplace } = this.props;
+        const { searchReplace, classes } = this.props;
         const { regex } = this.state;
         const invert = (prevState) => this.setState({ regex: !regex });
 
         return (
-            <div>
+            <div className={classes.searchAndReplace}>
                 <form onSubmit={(event) => {
                     event.preventDefault();
                     debugger;
@@ -73,4 +81,4 @@ class SearchAndReplace extends React.Component {
     }
 };
 
-export default SearchAndReplace;
+export default withStyles(styles)(SearchAndReplace);

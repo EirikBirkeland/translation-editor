@@ -1,50 +1,46 @@
 import React from 'react';
 import SearchAndReplace from '../components/SearchAndReplace';
 import { withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableHead from '@material-ui/core/TableHead';
-import TableBody from '@material-ui/core/TableBody';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
+import Grid from '@material-ui/core/Grid';
+import Input from '@material-ui/core/Input';
+import Paper from '@material-ui/core/Paper';
 
 import { connect } from 'react-redux';
 
 const styles = theme => ({
-    table: {
-        maxWidth: 600,
+    searchAndReplace: {
+        padding: '50px',
     },
+    document: {
+        maxWidth: 800,
+    },
+
 });
 
 const Document = ({ classes, segmentsCollection, registerSegmentChanges, searchReplace }) => {
     return (
-        <div style={{ maxWidth: "70%" }}>
-            <div style={{ border: "1px solid", padding: "5px" }}><SearchAndReplace searchReplace={searchReplace} /></div>
-
-            <Table className={classes.table}>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>English</TableCell>
-                        <TableCell>Translation</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody data-e2e="segments">
-                    {Array.from(segmentsCollection).map((x, i) => {
-                        return (
-                            <TableRow key={i}>
-                                <TableCell>{x.source}</TableCell>
-                                <TableCell>
-                                    <input
-                                        value={x.target}
-                                        onChange={event => registerSegmentChanges(event, i)}
-                                    />
-                                </TableCell>
-                            </TableRow>
-                        );
-                    })}
-                </TableBody>
-            </Table>
-
-        </div>
+        <Grid className={classes.document} container>
+            <Grid item xs={12} sm={12}><Paper><SearchAndReplace searchReplace={searchReplace} /></Paper></Grid>
+            <Grid style={{ 'margin-top': '20px' }} container>
+                <Grid item xs={12} sm={6}>English</Grid>
+                <Grid item xs={12} sm={6}>Translation</Grid>
+            </Grid>
+            <Grid style={{ 'margin-top': '5px' }} container data-e2e="segments">
+                {Array.from(segmentsCollection).map((x, i) => {
+                    return (
+                        <Grid style={{ 'margin-bottom': '10px' }} container key={i}>
+                            <Grid item xs={12} sm={5} style={{ 'margin-right': '10px' }}>{x.source}</Grid>
+                            <Grid item xs={12} sm={5}>
+                                <Input
+                                    value={x.target}
+                                    onChange={event => registerSegmentChanges(event, i)}
+                                />
+                            </Grid>
+                        </Grid>
+                    );
+                })}
+            </Grid>
+        </Grid>
     );
 }
 
