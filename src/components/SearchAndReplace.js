@@ -25,9 +25,9 @@ class SearchAndReplace extends React.Component {
                     debugger;
                     const { find, replace, regex, replaceAll, caseInsensitive } = event.target.elements;
                     searchReplace(find.value, replace.value, {
-                        caseInsensitive: caseInsensitive.value,
-                        regex: regex.value,
-                        replaceAll: replaceAll.value
+                        caseInsensitive: caseInsensitive.checked,
+                        regex: regex.checked,
+                        replaceAll: replaceAll.checked
                     });
                 }
                 }>
