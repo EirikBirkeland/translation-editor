@@ -27,7 +27,7 @@ const Document = ({ classes, segmentsCollection, registerSegmentChanges, searchR
                         <TableCell>Translation</TableCell>
                     </TableRow>
                 </TableHead>
-                <TableBody>
+                <TableBody data-e2e="segments">
                     {Array.from(segmentsCollection).map((x, i) => {
                         return (
                             <TableRow key={i}>

@@ -1,14 +1,14 @@
 export const registerSegmentChanges = (value, index) => (
   {
-  type: 'CHANGE_SEGMENT_CONTENT',
-  value: value,
-  index: index,
-});
+    type: 'CHANGE_SEGMENT_CONTENT',
+    value: value,
+    index: index,
+  });
 
-export const searchReplace = (findValue, replaceValue) => dispatch(
+export const searchReplace = (findValue, replaceValue, options) => dispatch(
   {
-      type: 'SEARCH_REPLACE',
-      findValue,
-      replaceValue,
-      options
+    type: 'SEARCH_REPLACE',
+    findValue,
+    replaceValue,
+    options
   });

@@ -1,4 +1,12 @@
 describe('Translation Editor', () => {
+
+    it('should allow translating', () => {
+        cy.visit('localhost:3000');
+        cy.get('[data-e2e="segments"] input').eq(0).type("Når man skriver et brev...");
+        cy.get('[data-e2e="segments"] input').eq(1).type("Vi burde være takknemlig for...");
+        cy.get('[data-e2e="segments"] input').eq(2).type("Det er tafatt å tenke at...");
+    });
+
     it('should find/replace plain text', () => {
         cy.visit('localhost:3000');
         cy.get('#find').type('klar');
