@@ -18,7 +18,7 @@ const styles = theme => ({
     color: "#EC3C51",
   },
   container: {
-    margin: "2%",
+    margin: "1em",
   },
   header: {
     backgroundColor: "#222",
