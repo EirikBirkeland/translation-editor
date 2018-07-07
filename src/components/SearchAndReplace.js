@@ -3,6 +3,9 @@ import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import Checkbox from '@material-ui/core/Checkbox';
 import { withStyles } from '@material-ui/core/styles';
+import { ExpansionPanel, ExpansionPanelSummary } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
     searchAndReplace: {
@@ -20,14 +23,17 @@ class SearchAndReplace extends React.Component {
     state = {
         regex: false,
     }
-    
+
     render() {
         const { searchReplace, classes } = this.props;
         const { regex } = this.state;
         const invert = (prevState) => this.setState({ regex: !regex });
 
         return (
-            <div className={classes.searchAndReplace}>
+            <ExpansionPanel className={classes.searchAndReplace}>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} >
+                    Search & Replace
+            </ExpansionPanelSummary>
                 <form onSubmit={(event) => {
                     event.preventDefault();
                     debugger;
@@ -39,15 +45,16 @@ class SearchAndReplace extends React.Component {
                     });
                 }
                 }>
-                    <span className="input-wrapper">
-                        <label><em>Find:</em></label>
-                        <Input type="text" name="find" id="find" />
-                    </span>
-                    <span className="input-wrapper">
-                        <label><em>Replace:</em></label>
-                        <Input id="replace" name="replace" />
-                    </span>
-
+                    <Grid container>
+                        <Grid item xs={12} sm={6} className="input-wrapper">
+                            <label><em>Find:</em></label>
+                            <Input type="text" name="find" id="find" />
+                        </Grid>
+                        <Grid item xs={12} sm={6} className="input-wrapper">
+                            <label><em>Replace:</em></label>
+                            <Input id="replace" name="replace" />
+                        </Grid>
+                    </Grid>
                     <br />
 
                     <Button type="submit" variant="contained" color="primary" size="small">Apply</Button>
@@ -76,7 +83,7 @@ class SearchAndReplace extends React.Component {
                         />
                     </span>
                 </form>
-            </div>
+            </ExpansionPanel>
         );
     }
 };
