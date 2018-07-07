@@ -36,7 +36,7 @@ class SearchAndReplace extends React.Component {
             </ExpansionPanelSummary>
                 <form onSubmit={(event) => {
                     event.preventDefault();
-                    debugger;
+                    
                     const { find, replace, regex, replaceAll, caseInsensitive } = event.target.elements;
                     searchReplace(find.value, replace.value, {
                         caseInsensitive: caseInsensitive.checked,

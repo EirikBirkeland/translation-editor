@@ -3,6 +3,8 @@ import SearchAndReplace from '../components/SearchAndReplace';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
+import TextField from '@material-ui/core/TextField';
+
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
@@ -36,10 +38,10 @@ const Document = ({ classes, segmentsCollection, registerSegmentChanges, searchR
                                     <Typography>{x.source}</Typography>
                                 </Grid>
                                 <Grid item xs={12} sm={5}>
-                                    <Input className="input" multiline
+                                    <TextField id={"segment-" + (i+1)} className="input" multiline
                                         value={x.target}
                                         onChange={event => registerSegmentChanges(event, i)}
-                                    ></Input>
+                                    ></TextField>
                                 </Grid>
                             </Grid>
                         );
