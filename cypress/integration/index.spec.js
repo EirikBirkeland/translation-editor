@@ -1,11 +1,11 @@
 describe('Translation Editor', () => {
-    const segments = '[data-e2e="segments"] input';
+    const segments = '[data-e2e="segments"] textarea';
 
-    it('should allow translating', () => {
+    it.only('should allow translating', () => {
         cy.visit('localhost:3000');
-        cy.get(segments).eq(0).clear().type("Når man skriver et brev...");
-        cy.get(segments).eq(1).clear().type("Vi burde være takknemlig for...");
-        cy.get(segments).eq(2).clear().type("Det er tafatt å tenke at...");
+        cy.get(segments).eq(0).clear({force: true}).type("Når man skriver et brev...");
+        cy.get(segments).eq(1).clear({force: true}).type("Vi burde være takknemlig for...");
+        cy.get(segments).eq(2).clear({force: true}).type("Det er tafatt å tenke at...");
     });
 
     it('should find/replace plain text', () => {

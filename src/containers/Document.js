@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 import { connect } from 'react-redux';
 
@@ -22,38 +23,32 @@ const Document = ({ classes, segmentsCollection, registerSegmentChanges, searchR
         <Grid className={classes.document} container>
             <Grid item xs={12} sm={12}><Paper><SearchAndReplace searchReplace={searchReplace} /></Paper></Grid>
             <Grid style={{ 'margin-top': '20px' }} container>
-                <Grid item xs={12} sm={6}>English</Grid>
-                <Grid item xs={12} sm={6}>Translation</Grid>
+                <Grid item xs={11} sm={5}>English</Grid>
+                <Grid item xs={11} sm={5}>Translation</Grid>
+                <Grid item xs={1} sm={2}>Status</Grid>
             </Grid>
-            <Grid style={{ 'margin-top': '5px' }} container data-e2e="segments">
-                {Array.from(segmentsCollection).map((x, i) => {
-                    return (
-                        <Grid style={{ 'margin-bottom': '10px' }} container key={i}>
-                            <Grid item xs={12} sm={5} style={{ 'margin-right': '10px' }}>{x.source}</Grid>
-                            <Grid item xs={12} sm={5}>
-                                <Input
-                                    value={x.target}
-                                    onChange={event => registerSegmentChanges(event, i)}
-                                />
+            <span data-e2e="segments">
+                <Grid style={{ 'margin-top': '5px' }} container>
+                    {Array.from(segmentsCollection).map((x, i) => {
+                        return (
+                            <Grid style={{ 'margin-bottom': '10px' }} container key={i}>
+                                <Grid item xs={12} sm={5} style={{ 'margin-right': '10px' }}>
+                                    <Typography>{x.source}</Typography>
+                                </Grid>
+                                <Grid item xs={12} sm={5}>
+                                    <Input className="input" multiline
+                                        value={x.target}
+                                        onChange={event => registerSegmentChanges(event, i)}
+                                    ></Input>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    );
-                })}
-            </Grid>
+                        );
+                    })}
+                </Grid>
+            </span>
         </Grid>
     );
 }
-
-/*
-handleInputChange = (event, i) => {
-    const newCollection = Object.assign([], this.state.segmentsCollection);
-    newCollection[i].target = event.target.value;
-
-    this.props.dispatch(registerSegmentChanges(event.target.value, i));
-};
-
-onSubmitForm = 
-*/
 
 const mapStateToProps = state => ({
     segmentsCollection: state.segments,
