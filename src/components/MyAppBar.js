@@ -8,9 +8,9 @@ import EditIcon from '@material-ui/icons/Edit';
 import CloudIcon from '@material-ui/icons/Cloud';
 import Profile from '@material-ui/icons/PermIdentity';
 
-function TabContainer(child) {
+function TabContainer(child, id) {
     return (
-        <Typography component="div" style={{ padding: 8 * 3 }}>
+        <Typography key={id} component="div" style={{ padding: 8 * 3 }}>
             {child}
         </Typography>
     );
@@ -37,7 +37,7 @@ class MyAppBar extends React.Component {
         const { classes } = this.props;
         return (
             <div>
-                <AppBar classes={classes.appBar} position="static">
+                <AppBar className={classes.appBar} position="static">
                     <Tabs value={this.state.tab} onChange={this.handleChange}>
                         <Tab label="Edit Document" icon={<EditIcon />}/>
                         <Tab label="Files" icon={<CloudIcon />}/>
@@ -46,7 +46,7 @@ class MyAppBar extends React.Component {
                 </AppBar>
                 {this.props.children.map((child, i) => {
                     if(i === this.state.tab) {
-                        return TabContainer(child);
+                        return TabContainer(child, i);
                     }
                     return null;
                 })}

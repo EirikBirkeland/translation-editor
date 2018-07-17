@@ -1,4 +1,26 @@
-import segmentsCollection from '../data/hagakure';
+//import segmentsCollection from '../data/hagakure';
+import ApolloClient from 'apollo-boost';
+import gql from 'graphql-tag';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:3333/graphql'
+});
+
+let segmentsCollection;
+
+client.query({
+  query: gql`
+    query {
+      segments {
+        id,
+        source,
+        target
+      }
+    }
+  `,
+})
+  .then(data => segmentsCollection = data)
+  .catch(error => console.error(error));
 
 const segments = (state = segmentsCollection, action) => {
   let newState;
@@ -33,9 +55,9 @@ const segments = (state = segmentsCollection, action) => {
         seg.target = seg.target.replace(adjustedFindValue, replaceValue);
         return seg;
       });
-      return newCollection;
+      return newCollection || [];
     default:
-      return state;
+      return state || [];
   }
 };
 

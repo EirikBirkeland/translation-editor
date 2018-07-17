@@ -2,7 +2,6 @@ import React from 'react';
 import SearchAndReplace from '../components/SearchAndReplace';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Input from '@material-ui/core/Input';
 import TextField from '@material-ui/core/TextField';
 
 import Paper from '@material-ui/core/Paper';
@@ -24,17 +23,17 @@ const Document = ({ classes, segmentsCollection, registerSegmentChanges, searchR
     return (
         <Grid className={classes.document} container>
             <Grid item xs={12} sm={12}><Paper><SearchAndReplace searchReplace={searchReplace} /></Paper></Grid>
-            <Grid style={{ 'margin-top': '20px' }} container>
+            <Grid style={{ marginTop: '20px' }} container>
                 <Grid item xs={11} sm={5}>English</Grid>
                 <Grid item xs={11} sm={5}>Translation</Grid>
                 <Grid item xs={1} sm={2}>Status</Grid>
             </Grid>
             <span data-e2e="segments">
-                <Grid style={{ 'margin-top': '5px' }} container>
+                <Grid style={{ marginTop: '5px' }} container>
                     {Array.from(segmentsCollection).map((x, i) => {
                         return (
-                            <Grid style={{ 'margin-bottom': '10px' }} container key={i}>
-                                <Grid item xs={12} sm={5} style={{ 'margin-right': '10px' }}>
+                            <Grid style={{ marginBottom: '10px' }} container key={i}>
+                                <Grid item xs={12} sm={5} style={{ marginRight: '10px' }}>
                                     <Typography>{x.source}</Typography>
                                 </Grid>
                                 <Grid item xs={12} sm={5}>
