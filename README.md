@@ -1,4 +1,5 @@
-*Stack*: React
+### Tools used
+- React
 - Redux
 - Material UI
 - GraphQL
