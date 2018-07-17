@@ -28,4 +28,4 @@ I.e., a piece of software that lets you:
 - Glossaries
 - TM
 
-[e2e](e2e.gif)
+![e2e](e2e.gif)
