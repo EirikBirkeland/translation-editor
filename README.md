@@ -7,7 +7,7 @@
 
 ### Current functionality
 - Edit the translation for each source segment
-- Apply search/replace operations on the translations
+- Apply search/replace operations on target segments
 
 The aim of this project is to make a fully functional translation editor prototype.
 
