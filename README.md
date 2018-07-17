@@ -27,3 +27,5 @@ I.e., a piece of software that lets you:
 - Typing auto-completion
 - Glossaries
 - TM
+
+[e2e](e2e.gif)
