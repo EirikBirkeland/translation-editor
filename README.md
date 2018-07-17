@@ -29,3 +29,4 @@ I.e., a piece of software that lets you:
 - TM
 
 ![e2e](e2e.gif)
+ (Image: E2e testing is actually fun with Cypress. Try it yourself!)
