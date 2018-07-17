@@ -1,18 +1,13 @@
 import React from 'react';
-import './App.css';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import loremIpsum from './loremipsum'
+import loremIpsum from './loremipsum';
 import FileUploadIcon from '@material-ui/icons/FileUpload';
 
 import MyAppBar from './components/MyAppBar';
 import Document from './containers/Document';
 
 const styles = theme => ({
-  appBar: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
-  },
   appTitle: {
     fontSize: "2em",
     color: "#EC3C51",
@@ -56,4 +51,4 @@ class App extends React.Component {
   }
 }
 
-export default withStyles(styles)(App)
+export default withStyles(styles)(App);

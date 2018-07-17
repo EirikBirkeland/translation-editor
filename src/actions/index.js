@@ -3,7 +3,8 @@ export const registerSegmentChanges = (value, index) => (
     type: 'CHANGE_SEGMENT_CONTENT',
     value: value,
     index: index,
-  });
+  }
+);
 
 export const searchReplace = (findValue, replaceValue, options) => dispatch(
   {
@@ -11,4 +12,9 @@ export const searchReplace = (findValue, replaceValue, options) => dispatch(
     findValue,
     replaceValue,
     options
-  });
+  }
+);
+
+export const loadSegments = () => dispatch({
+  type: 'FETCH_SEGMENTS',
+});

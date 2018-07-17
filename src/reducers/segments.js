@@ -1,30 +1,10 @@
-//import segmentsCollection from '../data/hagakure';
-import ApolloClient from 'apollo-boost';
-import gql from 'graphql-tag';
-
-const client = new ApolloClient({
-  uri: 'http://localhost:3333/graphql'
-});
-
-let segmentsCollection;
-
-client.query({
-  query: gql`
-    query {
-      segments {
-        id,
-        source,
-        target
-      }
-    }
-  `,
-})
-  .then(data => segmentsCollection = data)
-  .catch(error => console.error(error));
-
-const segments = (state = segmentsCollection, action) => {
+const segments = (state, action) => {
   let newState;
   switch (action.type) {
+
+    case 'GET_SEGMENTS_RECEIVED':
+      return Object.assign([], state, action.data.data.segments);
+      
     case 'CHANGE_SEGMENT_CONTENT':
       newState = Object.assign([], state);
       newState[action.index].target = action.value;
