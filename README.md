@@ -1,5 +1,4 @@
-### Current tooling
-- React
+*Stack*: React
 - Redux
 - Material UI
 - GraphQL
@@ -16,7 +15,8 @@ I.e., a piece of software that lets you:
 - translate those documents, with advanced CAT (Computer-Assisted Translation) functionality
 - export the completed documents as files
 
-------------------------
+![e2e](e2e.gif)
+ (Image: E2e testing is actually fun with Cypress. Try it yourself!)
 
 ### Planned features include:
 - Segment filtering options, including full text search (TBA)
@@ -27,6 +27,3 @@ I.e., a piece of software that lets you:
 - Typing auto-completion
 - Glossaries
 - TM
-
-![e2e](e2e.gif)
- (Image: E2e testing is actually fun with Cypress. Try it yourself!)
