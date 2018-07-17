@@ -1,20 +1,15 @@
-### Tools used
-- React
-- Redux
-- Material UI
-- GraphQL
-- Cypress (e2e)
-
 ### Current functionality
 - Edit the translation for each source segment
 - Apply search/replace operations on target segments
 
 The aim of this project is to make a fully functional translation editor prototype.
 
-I.e., a piece of software that lets you:
-- import files as documents
-- translate those documents, with advanced CAT (Computer-Assisted Translation) functionality
-- export the completed documents as files
+### Tools used
+- React
+- Redux
+- Material UI
+- GraphQL
+- Cypress (e2e)
 
 ![e2e](e2e.gif)
  (Image: E2e testing is actually fun with Cypress. Try it yourself!)
