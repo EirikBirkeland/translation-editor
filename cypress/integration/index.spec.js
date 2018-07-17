@@ -14,7 +14,7 @@ describe('Translation Editor', () => {
         cy.get('#replace').type('man leser');
         cy.contains('Apply').click().trigger('blur');
 
-        cy.get('#segment-1').should('have.value', 'Når man leser et brev...');
+        cy.get('#segment-1').should('have.value', 'Når du skriver et brev, skal du tenke deg at mottakeren henger det på veggen.');
     });
 
     it('should find/replace case-insensitively (regex)', () => {
@@ -26,18 +26,18 @@ describe('Translation Editor', () => {
         cy.get('#caseInsensitive').click();
         cy.contains('Apply').click().trigger('blur');
 
-        cy.get('#segment-1').should('have.value', 'Når man leser et brev...');
+        cy.get('#segment-1').should('have.value', 'Når du skriver et brev, skal du tenke deg at mottakeren henger det på veggen.');
     });
 
     it('should find/replace ALL (regex)', () => {
         cy.visit('localhost:3000');
         cy.contains('Search & Replace').click();
         cy.get('#find').type('\\S+');
-        cy.get('#replace').type('cyka blyat');
+        cy.get('#replace').type('foo bar');
         cy.get('#regex').click();
         cy.get('#replaceAll').click();
         cy.contains('Apply').click().trigger('blur');
 
-        cy.get('#segment-1').should('have.value', 'cyka blyat cyka blyat cyka blyat cyka blyat cyka blyat');
+        cy.get('#segment-1').should('have.value', 'foo bar foo bar foo bar foo bar foo bar foo bar foo bar foo bar foo bar foo bar foo bar foo bar foo bar foo bar foo bar');
     });
 })

@@ -1,10 +1,18 @@
 const segments = (state, action) => {
   let newState;
+
   switch (action.type) {
 
     case 'GET_SEGMENTS_RECEIVED':
-      return Object.assign([], state, action.data.data.segments);
-      
+      newState = Object.assign([], state);
+      action.data.data.segments.forEach((segment, i) => {
+        Object.entries(segment).forEach(([key, value]) => {
+          newState[i] = newState[i] || [];
+          newState[i][key] = value;
+        })
+      });
+      return newState;
+
     case 'CHANGE_SEGMENT_CONTENT':
       newState = Object.assign([], state);
       newState[action.index].target = action.value;

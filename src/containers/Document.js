@@ -16,37 +16,48 @@ const styles = theme => ({
     document: {
         maxWidth: 800,
     },
-
+    h3: {
+        textAlign: 'center',
+    },
+    gridItem: {
+        paddingLeft: '10px',
+        paddingRight: '10px',
+    }
 });
 
 const Document = ({ classes, segmentsCollection, registerSegmentChanges, searchReplace }) => {
     return (
         <Grid className={classes.document} container>
+        
             <Grid item xs={12} sm={12}><Paper><SearchAndReplace searchReplace={searchReplace} /></Paper></Grid>
+
             <Grid style={{ marginTop: '20px' }} container>
-                <Grid item xs={11} sm={5}>English</Grid>
-                <Grid item xs={11} sm={5}>Translation</Grid>
-                <Grid item xs={1} sm={2}>Status</Grid>
+                <Grid item xs={11} sm={5}><h3 className={classes.h3}>English</h3></Grid>
+                <Grid item xs={11} sm={5}><h3 className={classes.h3}>Translation</h3></Grid>
+                <Grid item xs={1} sm={2}><h3 className={classes.h3}>Status</h3></Grid>
             </Grid>
+
             <span data-e2e="segments">
                 <Grid style={{ marginTop: '5px' }} container>
                     {Array.from(segmentsCollection).map((x, i) => {
                         return (
                             <Grid style={{ marginBottom: '10px' }} container key={i}>
-                                <Grid item xs={12} sm={5} style={{ marginRight: '10px' }}>
+                                <Grid item className={classes.gridItem} xs={11} sm={5} style={{ marginRight: '10px' }}>
                                     <Typography>{x.source}</Typography>
                                 </Grid>
-                                <Grid item xs={12} sm={5}>
-                                    <TextField id={"segment-" + (i+1)} className="input" multiline
+                                <Grid item className={classes.gridItem}xs={11} sm={6}>
+                                    <TextField fullWidth={true} id={"segment-" + (i+1)} className="input" multiline
                                         value={x.target}
                                         onChange={event => registerSegmentChanges(event, i)}
                                     ></TextField>
                                 </Grid>
+                                <Grid item className={classes.gridItem}>-</Grid>
                             </Grid>
                         );
                     })}
                 </Grid>
             </span>
+
         </Grid>
     );
 }

@@ -9,8 +9,12 @@ import Grid from '@material-ui/core/Grid';
 
 const styles = theme => ({
     searchAndReplace: {
-        padding: '5px',
+        padding: '15px',
     },
+    label: {
+        marginRight: '5px',
+        marginLeft: '5px',
+    }
 
 });
 
@@ -47,11 +51,11 @@ class SearchAndReplace extends React.Component {
                 }>
                     <Grid container>
                         <Grid item xs={12} sm={6} className="input-wrapper">
-                            <label><em>Find:</em></label>
+                            <label className={classes.label}><em>Find:</em></label>
                             <Input type="text" name="find" id="find" />
                         </Grid>
                         <Grid item xs={12} sm={6} className="input-wrapper">
-                            <label><em>Replace:</em></label>
+                            <label className={classes.label}><em>Replace:</em></label>
                             <Input id="replace" name="replace" />
                         </Grid>
                     </Grid>
@@ -60,7 +64,7 @@ class SearchAndReplace extends React.Component {
                     <Button type="submit" variant="contained" color="primary" size="small">Apply</Button>
 
                     <span>
-                        <label>Regex</label>
+                        <label className={classes.label}>Regex</label>
                         <Checkbox
                             id="regex" name="regex"
                             onClick={invert}
