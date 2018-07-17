@@ -1,3 +1,14 @@
+### Current tooling
+- React
+- Redux
+- Material UI
+- GraphQL
+- Cypress (e2e)
+
+### Current functionality
+- Edit the translation for each source segment
+- Apply search/replace operations on the translations
+
 The aim of this project is to make a fully functional translation editor prototype.
 
 I.e., a piece of software that lets you:
