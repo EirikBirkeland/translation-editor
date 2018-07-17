@@ -19,7 +19,6 @@ function TabContainer(child, id) {
 const styles = theme => ({
     appBar: {
         flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
     },
 });
 
