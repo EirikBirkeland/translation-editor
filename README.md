@@ -14,12 +14,7 @@ The aim of this project is to make a fully functional translation editor prototy
 ![e2e](e2e.gif)
  (Image: E2e testing is actually fun with Cypress. Try it yourself!)
 
-### Planned features include:
-- Segment filtering options, including full text search (TBA)
-- Search & replace (done)
+### Planned features
+- Segment filtering options, including full text search
+- Search & replace
 - Language checks
-
-### Additional features may include:
-- Typing auto-completion
-- Glossaries
-- TM
