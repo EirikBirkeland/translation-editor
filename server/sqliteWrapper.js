@@ -24,20 +24,26 @@ const segmentsData = cloneDeep(_segmentsData).reduce((acc, ele, i) => {
    return acc;
 }, []);
 
-const Document = sequelize.define('document', {
+const Document = sequelize.define('documents', {
    title: Sequelize.STRING,
    segments: Sequelize.STRING
 });
 
-const createDb = () => {
+module.exports.createDb = () => {
    sequelize.sync()
-   .then(() => Document.create({
-      title: 'Hagakure',
-      segments: JSON.stringify(segmentsData),
-   }))
-   .then(segments => {
-      console.log(segments.toJSON());
-   });
+      .then(() => Document.create({
+         title: 'Hagakure',
+         segments: JSON.stringify(segmentsData),
+      }))
+      .then(segments => {
+         console.log(segments.toJSON());
+      });
 };
 
-createDb();
+module.exports.getSegmentsData = (title, cb) => {
+   Document.findOne({
+      where: { title: title },
+   }).then(users => {
+      return cb(users)
+   });
+};

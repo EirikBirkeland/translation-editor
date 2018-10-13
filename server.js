@@ -2,7 +2,7 @@ const express = require('express');
 const express_graphql = require('express-graphql');
 const { buildSchema } = require('graphql');
 const cors = require('cors');
-import { getSegment, getSegments } from './sqliteWrapper';
+const { createDb, getSegmentsData } = require('./server/sqliteWrapper');
 
 // GraphQL schema
 const schema = buildSchema(`
@@ -17,20 +17,26 @@ const schema = buildSchema(`
     }
 `);
 
-const getSegment = ({ id }) => segmentsData.filter(seg => seg.id == id)[0];
-const getSegments = () => segmentsData;
+let getSegments;
+let getSegment = ({ id }) => getSegments.filter(seg => seg.id == id)[0];
 
-const root = {
-  segment: getSegment,
-  segments: getSegments,
-};
+getSegmentsData('Hagakure', (res) => {
+  console.log(res.dataValues.segments)
 
-const app = express();
-app.use(cors())
-app.use('/graphql', express_graphql({
-  schema: schema,
-  rootValue: root,
-  graphiql: true
-}));
+  getSegments = JSON.parse(res.dataValues.segments);
 
-app.listen(3333, () => console.log('Express GraphQL Server Now Running On localhost:3333/graphql'));
+  const root = {
+    segment: getSegment,
+    segments: getSegments,
+  };
+
+  const app = express();
+  app.use(cors());
+  app.use('/graphql', express_graphql({
+    schema: schema,
+    rootValue: root,
+    graphiql: false
+  }));
+
+  app.listen(3333, () => console.log('Express GraphQL Server Now Running On localhost:3333/graphql'));
+});
