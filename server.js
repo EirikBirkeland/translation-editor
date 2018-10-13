@@ -1,10 +1,8 @@
 const express = require('express');
 const express_graphql = require('express-graphql');
 const { buildSchema } = require('graphql');
-const _segmentsData = require('./data/hagakure');
-const cloneDeep = require('lodash/cloneDeep');
 const cors = require('cors');
-
+import { getSegment, getSegments } from './sqliteWrapper';
 
 // GraphQL schema
 const schema = buildSchema(`
@@ -18,12 +16,6 @@ const schema = buildSchema(`
         target: String
     }
 `);
-
-const segmentsData = cloneDeep(_segmentsData).reduce((acc, ele, i) => {
-  ele.id = i + 1;
-  acc[i] = ele;
-  return acc;
-}, []);
 
 const getSegment = ({ id }) => segmentsData.filter(seg => seg.id == id)[0];
 const getSegments = () => segmentsData;
